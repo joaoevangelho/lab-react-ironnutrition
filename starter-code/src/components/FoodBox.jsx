@@ -1,13 +1,11 @@
 // import React from 'react';
-import foodList from './../foods.json';
-
 import React, { Component } from 'react';
 
 class FoodBox extends Component {
   render() {
     return (
-      <div className="media">
-        {foodList.map(food => {
+      <div className="media d-flex flex-column">
+        {this.props.foods.map(food => {
           return (
             <div>
               <img

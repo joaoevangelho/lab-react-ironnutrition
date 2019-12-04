@@ -9,15 +9,17 @@ class AddFood extends Component {
       image: ''
     };
   }
-  handleFormSubmit = event => {
-    event.preventDefault();
-    this.props.addFood(this.state);
-    this.setState({
-      name: '',
-      calories: '',
-      image: ''
-    });
-  };
+
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   this.props.addFood(this.state);
+  //   this.setState({
+  //     name: '',
+  //     calories: '',
+  //     image: ''
+  //   });
+  // };
+
   handleNameInput = event => {
     this.setState({
       name: event.target.value
@@ -36,7 +38,12 @@ class AddFood extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
+        <form
+          onSubmit={event => {
+            this.props.addFood(event, this.state);
+          }}
+          encType="multipart/form-data"
+        >
           <label>Name:</label>
           <input
             type="text"
